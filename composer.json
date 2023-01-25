@@ -13,7 +13,6 @@
         "name": "Mac Leen",
         "email": "avfoxltd@gmail.com"
     }],
-    "minimum-stability": "dev",
     "scripts": {
     "start-server": "php -S localhost:9000 -t ./"
     },
