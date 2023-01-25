@@ -7,7 +7,24 @@
 **Mcl-Router** is a small sized PHP library intended for use/integration in your application
 
 
-## Notices
+## Usage Notes
+
+
+   -  **IMPORTANT**\
+
+   In your root composer.json file please insert these 2 flags:
+
+```json
+   {
+      "here are the various flags of the":"composer.jsn file",
+      "minimum-stability": "dev",
+      "prefer-stable": true
+   }
+```
+
+
+
+## General Notes
 
 There are few things that I dont like about existing (non-framework based) php routers
 
