@@ -64,8 +64,8 @@ The package contains the following folders:
 ```php
 //This is the api.php routes file
 
-use Core\Router\Route;
-use Core\Router\RouteGroup;
+use MclRouter\Route;
+use MclRouter\RouteGroup;
 
 
 Route::get('/', 'HomeController@index');
