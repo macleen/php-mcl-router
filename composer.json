@@ -1,0 +1,29 @@
+{
+    "name": "macleen/mcl-router",
+    "description": "Light weight php router",
+    "type": "library",
+    "require": {
+        "php": ">=8.0",
+        "illuminate/collections": "^9.43",
+        "symfony/http-foundation": "^6.2",
+        "illuminate/support": "^9.48"
+    },
+    "license": "MIT",
+    "authors": [{
+        "name": "Mac Leen",
+        "email": "avfoxltd@gmail.com"
+    }],
+    "minimum-stability": "dev",
+    "scripts": {
+    "start-server": "php -S localhost:9000 -t ./"
+    },
+    "autoload": {
+        "files" :[
+            "./static/constants.php",
+            "./static/helpers.php"
+        ],
+        "psr-4": {
+            "MclRouter\\": "src/"
+        }
+    }
+}
