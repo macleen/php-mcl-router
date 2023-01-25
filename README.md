@@ -215,7 +215,68 @@ Route::get('/user/{id?}', 'UserController@get')
 
 ```
 
- 
+
+## Controller function call
+
+   Each function supplied with a certain route will be called in case of a route match with 2 parameters injected with the call:
+
+
+```php
+
+use MclRouter\Requests\AdaptedRequest;
+use MclRouter\RouteParams;
+
+
+Route::get('/user/{id?}', 'UserController@get');
+Route::post('/{id}', 'UserController@save');
+
+class UserController {
+
+   function get( RouteParams $parms ){
+
+      $id = $parms->id;
+      // some logic here
+      return $something;
+
+   }
+
+   function save( RouteParams $parms, AdaptedRequest $req ){
+
+      $id = $parms->id;
+      $data = $req->all( ); // this is the post data
+      // some logic here
+      return $something;
+
+   }
+
+}
+Route::get('/user/{id?}', function( RouteParams $parms, AdaptedRequest $req ){
+   // some logic here
+   // response can be an instance of Symphony reqponse or 
+   // string
+   // array : ( will be json serialized )
+   return (mixed) $response;
+});
+
+
+
+// OR USING A CALLABLE INSTEAD OF A CONTROLLER
+
+
+Route::get('/user/{id?}', function( RouteParams $parms, AdaptedRequest $req ){
+   // some logic here
+   // response can be an instance of Symphony reqponse or 
+   // string
+   // array : ( will be json serialized )
+   return (mixed) $response;
+});
+
+```
+
+
+
+
+
 ## Installation
 
    composer require macleen/mcl-router
