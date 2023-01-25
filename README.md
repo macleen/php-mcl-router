@@ -193,29 +193,6 @@ Route::get('/user/{id?}', 'UserController@get')
 ```
 
 
-
-
-
-## Kick off
-
-
-   -  **Main index file**
-       this is an example of the index.php file. Assuming your main namespace is app and a viewer class is present to display the final response
-
-    
-```php
-
-    require __DIR__ . '/vendor/autoload.php';
-    #------------------------------------------------------------------------
-    $routes = [ __DIR__ . '/routes/api.php', __DIR__ . '/routes/web.php' ];
-
-    (new App\Render\Viewer( ))
-       ->render(( new MclRouter\Router( $routes, [ '\\App\\Controllers\\']))
-       ->dispatch( ));
-
-```
-
-
 ## Controller function call
 
    Each function supplied with a certain route will be called in case of a route match with 2 parameters injected with the call:
@@ -274,6 +251,26 @@ Route::get('/user/{id?}', function( RouteParams $parms, AdaptedRequest $req ){
 ```
 
 
+
+
+## Kick off
+
+
+   -  **Main index file**
+       this is an example of the index.php file. Assuming your main namespace is app and a viewer class is present to display the final response
+
+    
+```php
+
+    require __DIR__ . '/vendor/autoload.php';
+    #------------------------------------------------------------------------
+    $routes = [ __DIR__ . '/routes/api.php', __DIR__ . '/routes/web.php' ];
+
+    (new App\Render\Viewer( ))
+       ->render(( new MclRouter\Router( $routes, [ '\\App\\Controllers\\']))
+       ->dispatch( ));
+
+```
 
 
 
