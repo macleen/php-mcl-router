@@ -72,9 +72,28 @@ The package contains the following folders:
 
   -  **src/Requests**\
     This folder contains an AdaptedRequest class extending Symphony Request class for ease of use
-  
+
+
+
+
+
+
+
+
 
 ## Instantiation
+
+
+
+  -  **MclRouter / file: Router.php**\
+     This is the main package class. it takes care of the registration of predefined route groups sitting is seperate files (web.php, api.php, admin.php...etc...) using the RouteServiceProvider. it takes 2 parameters the the roue paths: string|array $route_definition_paths: paths to the route definition files in the form of a string '/path/subpath1/subpath2/web.php' if you have only one route file or in the form of ['/path/subpath1/subpath2/web.php','/path/subpath1/subpath2/api.php'] if you have more, and an array of controller name spaces ( where your controllers are defined ).
+
+
+```php
+    use MclRouter\Router;
+    $router = new Router( string|array $route_definition_files, ?array $controllers_name_spaces = [ ]);
+```
+
 
 
   -  **Routes definition**\
@@ -103,25 +122,88 @@ Route::group('/user/{id}', function( RouteGroup $group ){
 
 
 
+## Route Parameters
 
-  -  **Router.php**\
-     This is the main package class. it takes care of the registration of predefined route groups sitting is seperate files (web.php, api.php, admin.php...etc...) using the RouteServiceProvider. it takes 2 parameters the the roue paths: string|array $route_definition_paths: paths to the route definition files in the form of a string '/path/subpath1/subpath2/web.php' if you have only one route file or in the form of ['/path/subpath1/subpath2/web.php','/path/subpath1/subpath2/api.php'] if you have more, and an array of controller name spaces ( where your controllers are defined ).
+   -  **named routes**
+
+   You can name your routes for later retrieval by name, just chain the name function to the Route::{method} like so:
 
 
 ```php
-    use MclRouter\Router;
-    $router = new Router( string|array $route_definition_files, ?array $controllers_name_spaces = [ ]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/data/save', 'DataController@save')->name('save');
+
 ```
 
 
-   -  **Illustration**
+   -  **Variable parameters**
+
+   Variable parameters are enclosed between "{" and "}" like so:
+
+
+```php
+
+Route::get('/user/{id}', 'UserController@get')->name('home');
+Route::post('/save/{release_id}', 'DataController@save')->name('save');
+
+```
+
+   -  **Optional parameters**
+
+   Optional parameters are enclosed between "{" and "?}" with a question mark appended at the end of the parameter name and before the closing "}":
+
+
+```php
+
+Route::get('/user/{id?}', 'UserController@get')->name('get_user_by_id');
+Route::post('/save/{release_id?}', 'DataController@save')->name('save_release');
+
+```
+
+
+   -  **RegEx with required parameters**
+
+   Usage of regex validation rules can be appended to the static Route::{method}by chaining the where function
+
+
+```php
+
+Route::get('/user/{id}', 'UserController@get')
+     ->name('get_user_by_id')
+     ->where(['id' => [a-zA-Z]{2}[\d]{6}]);
+
+   // id must start with 2 alpha characters followed by 6 digits
+```
+
+
+
+   -  **RegEx with opional parameters**
+
+   Usage of regex validation rules with optional parameters is allowed. Which means the route is processed if the parameter is omitted but is it is supplied it must match the regex expression:
+
+
+```php
+
+Route::get('/user/{id?}', 'UserController@get')
+     ->name('get_user_by_id')
+     ->where(['id' => [a-zA-Z]{2}[\d]{6}]);
+
+   // id is optional but if supplied it must start with 2 alpha characters followed by 6 digits
+```
+
+
+
+
+
+## Kick off
+
+
+   -  **Main index file**
+       this is an example of the index.php file. Assuming your main namespace is app and a viewer class is present to display the final response
 
     
 ```php
-
-    // this is my main index.php file
-    // Assuming your main namespace is app and a viewer
-    // class is present to display the final response
 
     require __DIR__ . '/vendor/autoload.php';
     #------------------------------------------------------------------------
@@ -134,7 +216,7 @@ Route::group('/user/{id}', function( RouteGroup $group ){
 ```
 
  
-   -  **Installation**
+## Installation
 
    composer require macleen/mcl-router
 
