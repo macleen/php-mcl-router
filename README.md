@@ -25,7 +25,7 @@ There are few things that I dont like about existing (non-framework based) php r
 
 
 
-## Package External Dependecies
+## Package External Dependencies
 
 The library is depending on the following external packages:
 
