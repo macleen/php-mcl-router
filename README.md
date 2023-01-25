@@ -64,8 +64,8 @@ The package contains the following folders:
 ```php
 //This is the api.php routes file
 
-use Core\Router\Route;
-use Core\Router\RouteGroup;
+use MclRouter\Route;
+use MclRouter\RouteGroup;
 
 
 Route::get('/', 'HomeController@index');
@@ -112,6 +112,11 @@ Route::group('/user/{id}', function( RouteGroup $group ){
        ->dispatch( ));
 
 ```
+
+ 
+   -  **Installation**
+
+   composer require macleen/mcl-router
 
 ---------------------------------------------------------
  >Author: C. Mahmoud / MacLeen 2023 v 1.0.1 / email: **acutclub@gmail.com**\
