@@ -90,7 +90,7 @@ Route::group('/user/{id}', function( RouteGroup $group ){
 
 ```php
     use MclRouter\Router;
-    $router = new Route( string|array $route_definition_files, ?array $controllers_name_spaces = [ ]);
+    $router = new Router( string|array $route_definition_files, ?array $controllers_name_spaces = [ ]);
 ```
 
 
