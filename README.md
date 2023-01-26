@@ -230,7 +230,7 @@ class UserController {
 }
 
 
-// OR USING A CALLABLE INSTEAD OF A CONTROLLER
+// OR USING A CLOSURE INSTEAD OF A CONTROLLER
 
 
 Route::get('/user/{id?}', function( RouteParams $parms, AdaptedRequest $req ){
