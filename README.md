@@ -249,7 +249,7 @@ Route::get('/user/{id?}', function( RouteParams $parms, AdaptedRequest $req ){
 
    -  **Post requests to the base url**\
 
-   This is a PHP/Http issue. Suppose your domain is hosted at https://pizza.com/ingredients/classes ( the base url ), if you invoke a POST request ( outside of a form submission) against that url be sure to close it with a slah like so https://pizza.com/ingredients/classes/. This applies only for the base url.
+   This is a PHP/Http issue. Suppose your domain is hosted at https://pizza.com/ingredients/classes ( the base url ), if you invoke a POST request ( outside of a form submission) against that url be sure to close it with a slash like so https://pizza.com/ingredients/classes/
 
 ```php
 //And the route defnition must also respect that rule
