@@ -27,6 +27,7 @@
 
 
 
+
 ## General Notes
 
 There are few things that I dont like about existing (non-framework based) php routers
@@ -241,6 +242,23 @@ Route::get('/user/{id?}', function( RouteParams $parms, AdaptedRequest $req ){
 });
 
 ```
+
+
+
+## IMPORTANT Usage Notes
+
+   -  **Post requests to the base url**\
+
+   This is a PHP/Http issue. Suppose your domain is hosted at https://pizza.com/ingredients/classes ( the base url ), if you invoke a POST request ( outside of a form submission) against that url be sure to close it with a slah like so https://pizza.com/ingredients/classes/. This applies only for the base url.
+
+```php
+//And the route defnition must also respect that rule
+
+Route::post('/ngredients/classes/', 'UploadController@upload_files');
+
+```
+
+
 
 
 
