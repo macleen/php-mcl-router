@@ -172,7 +172,7 @@ Route::post('/save/{release_id?}', 'DataController@save')->name('save_release');
 
 Route::get('/user/{id}', 'UserController@get')
      ->name('get_user_by_id')
-     ->where(['id' => [a-zA-Z]{2}[\d]{6}]);
+     ->where(['id' => '[a-zA-Z]{2}[\d]{6}']);
 
    // id must start with 2 alpha characters followed by 6 digits
 ```
@@ -188,7 +188,7 @@ Route::get('/user/{id}', 'UserController@get')
 
 Route::get('/user/{id?}', 'UserController@get')
      ->name('get_user_by_id')
-     ->where(['id' => [a-zA-Z]{2}[\d]{6}]);
+     ->where(['id' => '[a-zA-Z]{2}[\d]{6}');
 
    // id is optional but if supplied it must start with 2 alpha characters followed by 6 digits
 ```
