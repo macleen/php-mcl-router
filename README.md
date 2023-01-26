@@ -165,7 +165,7 @@ Route::post('/save/{release_id?}', 'DataController@save')->name('save_release');
 
    -  **RegEx with required parameters**
 
-   Usage of regex validation rules can be appended to the static Route::{method}by chaining the where function
+   Usage of regex validation rules can be appended to the static Route::{method} by chaining the where function
 
 
 ```php
@@ -181,7 +181,7 @@ Route::get('/user/{id}', 'UserController@get')
 
    -  **RegEx with opional parameters**
 
-   Usage of regex validation rules with optional parameters is allowed. Which means the route is processed if the parameter is omitted but is it is supplied it must match the regex expression:
+   Usage of regex validation rules with optional parameters is allowed. Which means the route will processed if the parameter is omitted but if it is supplied it must match the regex expression:
 
 
 ```php
@@ -196,7 +196,7 @@ Route::get('/user/{id?}', 'UserController@get')
 
 ## Controller function call
 
-   Each function supplied with a certain route will be called in case of a route match with 2 parameters injected with the call:
+   Each function supplied with a certain route will be called in case of a route match with 2 parameters automatically injected:
 
 
 ```php
@@ -278,7 +278,7 @@ Route::post('/ingredients/classes/', 'UploadController@upload_files');
     $routes = [ __DIR__ . '/routes/api.php', __DIR__ . '/routes/web.php' ];
 
     (new App\Render\Viewer( ))
-       ->render(( new MclRouter\Router( $routes, [ '\\App\\Controllers\\']))
+       ->render(( new MclRouter\Router( $routes, [ '\\App\\Controllers\\' ]))
        ->dispatch( ));
 
 ```
