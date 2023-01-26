@@ -235,8 +235,8 @@ class UserController {
 
 Route::get('/user/{id?}', function( RouteParams $parms, AdaptedRequest $req ){
    // some logic here
-   // response can be an instance of Symphony reqponse or 
-   // string
+   // response can be an instance of Symphony response class or 
+   // string or 
    // array : ( will be json serialized )
    return (mixed) $response;
 });
