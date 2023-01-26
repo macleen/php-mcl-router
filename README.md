@@ -249,12 +249,13 @@ Route::get('/user/{id?}', function( RouteParams $parms, AdaptedRequest $req ){
 
    -  **Post requests to the base url**\
 
-   This is a PHP/Http issue. Suppose your domain is hosted at https://pizza.com/ingredients/classes ( the base url ), if you invoke a POST request ( outside of a form submission) against that url be sure to close it with a slash like so https://pizza.com/ingredients/classes/
+   This is a PHP/Http issue. Suppose your domain is hosted at https://pizza.com/ingredients/classes ( the base url ), if you invoke a POST request ( outside of a form submission) against that url be sure to close it with a slash like so https://pizza.com/ingredients/classes/.
+   Check this issue at https://stackoverflow.com/questions/18371009/serverrequest-method-return-get-insted-post
 
 ```php
 //And the route defnition must also respect that rule
 
-Route::post('/ngredients/classes/', 'UploadController@upload_files');
+Route::post('/ingredients/classes/', 'UploadController@upload_files');
 
 ```
 
