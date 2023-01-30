@@ -2,6 +2,20 @@
     "name": "macleen/mcl-router",
     "description": "Light weight php router",
     "type": "library",
+    "keywords": [
+        "framework",
+        "http",
+        "rest",
+        "web service",
+        "router",
+        "request",
+        "response",
+        "api",
+        "group",
+        "method",
+        "controller",
+        "mapping"
+    ],
     "require": {
         "php": ">=8.0",
         "illuminate/collections": "^9.43",
